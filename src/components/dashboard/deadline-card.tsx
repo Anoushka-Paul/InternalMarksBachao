@@ -25,7 +25,7 @@ export function DeadlineCard({ deadline, onUpdate, onToggleComplete, onDelete }:
   const isOverdue = !deadline.isCompleted && new Date(deadline.dueDate) < new Date();
 
   return (
-    <Card className={cn("flex flex-col transition-all", deadline.isCompleted && "bg-card/50", isOverdue && "border-destructive/50")}>
+    <Card className={cn("flex flex-col transition-all hover:shadow-lg hover:-translate-y-1", deadline.isCompleted && "bg-card/50", isOverdue && "border-destructive/50")}>
       <CardHeader className="flex flex-row items-start justify-between">
         <div className="space-y-1.5">
           <CardTitle className="font-headline text-lg">{deadline.subject}</CardTitle>
@@ -83,7 +83,7 @@ export function DeadlineCard({ deadline, onUpdate, onToggleComplete, onDelete }:
       <CardFooter className="flex justify-between items-center">
         <div>
           {deadline.isCompleted ? (
-            <Badge variant="secondary">Completed</Badge>
+            <Badge variant="success">Completed</Badge>
           ) : isOverdue ? (
             <Badge variant="destructive">
               Overdue by {formatDistanceToNow(new Date(deadline.dueDate))}
